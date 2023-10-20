@@ -7,9 +7,7 @@ from scipy.io.wavfile import write
 # Initialize pygame
 pygame.init()
 pygame.mixer.init()
-#e
-for length in range(1, 10):
-    print(length)
+
 # Create a short noise and save as a .wav file
 samplerate = 44100
 duration = 0.1
