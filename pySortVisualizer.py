@@ -68,6 +68,66 @@ def bubble_sort(bars):
             if bars[j] > bars[j+1] :
                 bars[j], bars[j+1] = bars[j+1], bars[j]
 
+def ionsertion_sort(bars):
+    for i in range(1, len(bars)):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+        key = bars[i]
+        j = i-1
+        while j >=0 and key < bars[j] :
+                bars[j+1] = bars[j]
+                j -= 1
+                draw_bars(bars, j)
+                noise_sound.play()
+                pygame.time.delay(4) 
+        bars[j+1] = key
+        
+
+def partition(array,low,high):
+ 
+    # choose the rightmost element as pivot
+    pivot = array[high]
+ 
+    # pointer for greater element
+    i = low - 1
+ 
+    # traverse through all elements
+    # compare each element with pivot
+    for j in range(low, high):
+        if array[j] <= pivot:
+            draw_bars(bars, j)
+            pygame.time.delay(4)
+            # If element smaller than pivot is found
+            # swap it with the greater element pointed by i
+            i = i + 1
+ 
+            # Swapping element at i with element at j
+            (array[i], array[j]) = (array[j], array[i])
+
+ 
+    # Swap the pivot element with the greater element specified by i
+    (array[i + 1], array[high]) = (array[high], array[i + 1])
+    # draw_bars(bars, j)
+    # pygame.time.delay(10)
+    return i + 1
+
+
+def quicksort(array, low, high):
+    if low < high:
+ 
+        # Find pivot element such that
+        # element smaller than pivot are on the left
+        # element greater than pivot are on the right
+        pi = partition(array, low, high)
+ 
+        # Recursive call on the left of pivot
+        quicksort(array, low, pi - 1)
+        # Recursive call on the right of pivot
+        quicksort(array, pi + 1, high)
+ 
+
 start_sorting = False
 while True:
     for event in pygame.event.get():
@@ -78,7 +138,9 @@ while True:
             mouse_pos = event.pos
             if WIDTH // 4 < mouse_pos[0] < 3 * WIDTH // 4 and HEIGHT // 4 < mouse_pos[1] < 3 * HEIGHT // 4:
                 start_sorting = True
-                bubble_sort(bars)
+                # bubble_sort(bars)
+                # ionsertion_sort(bars)
+                quicksort(bars, 0, len(bars) - 1)
 
     if not start_sorting:
         draw_button()
