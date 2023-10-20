@@ -7,7 +7,9 @@ from scipy.io.wavfile import write
 # Initialize pygame
 pygame.init()
 pygame.mixer.init()
-
+#e
+for length in range(1, 10):
+    print(length)
 # Create a short noise and save as a .wav file
 samplerate = 44100
 duration = 0.1
@@ -23,7 +25,7 @@ WIDTH, HEIGHT = 600,400
 BACKGROUND_COLOR = (0,0,0)
 BAR_COLOR = (169,169,169) # Grey color
 ACTIVE_BAR_COLOR = (255,0,0) # Red color for the active bar
-BAR_WIDTH = 4
+BAR_WIDTH = 6
 TEXT_COLOR = (255,255,255)
 BUTTON_COLOR = (0,0,255)
 
