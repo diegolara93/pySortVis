@@ -35,7 +35,7 @@ pygame.display.set_caption("Bubble Sort Visualization")
 num_bars = WIDTH // BAR_WIDTH
 bars = [random.randint(1, HEIGHT) for _ in range(num_bars)]
 
-def draw_button():
+def draw_start_button():
     font = pygame.font.Font(None, 36)
     text_surf = font.render('Start', True, TEXT_COLOR)
     text_rect = text_surf.get_rect(center=(WIDTH // 2, HEIGHT // 2))
@@ -141,4 +141,4 @@ while True:
                 quicksort(bars, 0, len(bars) - 1)
 
     if not start_sorting:
-        draw_button()
+        draw_start_button()
